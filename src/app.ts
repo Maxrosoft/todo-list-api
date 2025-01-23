@@ -14,7 +14,7 @@ app.use("/todos", todosRouter);
 app.use(errorHandler);
 
 mongoose
-    .connect("mongodb://localhost:27017/todoListDB")
+    .connect(process.env.MONGO_URI ?? "mongodb://localhost:27017/todoListDB")
     .then(() => {
         app.listen(PORT, () => {
             console.log(`App is listening at http://localhost:${PORT}`);
